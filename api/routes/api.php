@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/users', [UserController::class, 'index']); // Show Users
+
 
 // Public Routes
 Route::post('/login', [UserController::class, 'login']); // Login User
@@ -23,7 +23,7 @@ Route::post('/register', [UserController::class, 'register']); // Register User
 
 // This are Protected Routes
 Route::group(['middleware'=>['auth:sanctum']],function(){
-
+    Route::get('/users', [UserController::class, 'index']); // Show Users
     Route::get('/products', [ProductController::class, 'index']); // Show Products
     // Route::get('/products/{id}',[ProductController::class, 'show']); //Show Specific Product
     Route::get('/products/search/{name}', [ProductController::class, 'search']); // Search Product
